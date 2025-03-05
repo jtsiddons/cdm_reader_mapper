@@ -13,7 +13,7 @@ Getting started
 
 You can test the tool very easy by using a sample data set that comes with the repository. For this you need to run the following code:
 
-.. code-block:: console
+.. code-block:: python
 
    from cdm_reader_mapper import read_mdf
    from cdm_reader_mapper.test_data import test_icoads_r300_d704 as test_data
@@ -29,7 +29,7 @@ You can test the tool very easy by using a sample data set that comes with the r
 
 You can also read subsections from the IMMA test file:
 
-.. code-block:: console
+.. code-block:: python
 
    db_sub = read_mdf(filepath, imodel=imodel, sections = ["core", "c1", "c98"])
 
@@ -38,7 +38,7 @@ You can also read subsections from the IMMA test file:
 
 In this case deck 704: US Marine Meteorological Journal collection of data code:
 
-.. code-block:: console
+.. code-block:: python
 
     db.map_model()
 
@@ -49,7 +49,7 @@ In this case deck 704: US Marine Meteorological Journal collection of data code:
 
 Detect and flag duplicated observations without overwriting the original CDM tables:
 
-.. code-block:: console
+.. code-block:: python
 
     db.duplicate_check()
     db.flag_duplicates(overwrite=False)
@@ -64,6 +64,6 @@ Detect and flag duplicated observations without overwriting the original CDM tab
 ~~~~~~~~~~~~~~~~~~~
 This writes the output to an ascii file with a pipe delimited format using the following function:
 
-.. code-block:: console
+.. code-block:: python
 
     db.write_tables()

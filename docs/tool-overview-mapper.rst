@@ -13,7 +13,7 @@ Workflow
 
     Simplified workflow how to map data to the CDM
 
-.. code-block:: console
+.. code-block:: python
 
    from cdm_reader_mapper import read_mdf
    from cdm_reader_mapper.test_data import test_icoads_r300_d704 as test_data
@@ -28,7 +28,7 @@ Workflow
 
 Instead of using :py:class:`cdm_reader_mapper.DataBundle`'s method function to map data, it can be mapped directly from a :py:class:`pandas.DataFrame` using py:func`cdm_reader_mapper.map_model`.
 
-.. code-block:: console
+.. code-block:: python
 
    from cdm_reader_mapper import map_model
 

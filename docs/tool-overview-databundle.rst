@@ -10,7 +10,7 @@ Reading original meteorological/marine data
 
 After reading meteorogical/marine data like ICOADS or C-RAID with the :py:class:`cdm_reader_mapper.read_mdf`, the function returns a so-called :py:class:`cdm_reader_mapper.DataBundle`. As input data a string representing the path to the original data and the name of the data model (``imodel``) is required. The original data is stored as :py:attr:`DataBundle.data`. Next to the data there is a validation mask, called :py:attr:`DataBundle.mask`. This mask validates the input data against the input data model scheme. For more information see chapter :ref:`data-models`.
 
-.. code-block:: console
+.. code-block:: python
 
     from cdm_reader_mapper import read_mdf, test_data
 
@@ -30,13 +30,13 @@ Validate ``data``
 
 After reading the data, the method functions :py:func:`DataBundle.validate_datetime` validates date time information in ``data``:
 
-.. code-block:: console
+.. code-block:: python
 
     val_dt = db.validate_datetime()
 
 Another validation method is to validate ``data`` against station id names with :py:func:`DataBundle.validate_id`:
 
-.. code-block:: console
+.. code-block:: python
 
     val_id = db.validate_id()
 
@@ -54,7 +54,7 @@ After reading the data, in some cases, it is desired that the final CDM set of t
 
 The first function applies ICOADS deck specific platform ID corrections to the data, the second one ICOADS deck specific datetime corrections.
 
-.. code-block:: console
+.. code-block:: python
 
     db.correct_pt()
 
@@ -71,7 +71,7 @@ Map ``data`` to the CDM_
 
 Now the meteorological data can be maqpped to the Common Data Model (CDM_) using the method function :py:func:`DataBundle.map_model`:
 
-.. code-block:: console
+.. code-block:: python
 
     db.map_model()
 
@@ -87,7 +87,7 @@ After mapping to the CDM format it is useful to check if :py:attr:`DataBundle.ta
 
 The first step is to call the method function :py:func:`DataBundle.duplicate_check`. This function scans :py:attr:`DataBundle.tables` for any duplicates.
 
-.. code-block:: console
+.. code-block:: python
 
     db.duplicate_check()
 

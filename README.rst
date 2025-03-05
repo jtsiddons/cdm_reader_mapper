@@ -46,13 +46,13 @@ Installation using pip
 
 You can install the package directly from pip:
 
-.. code-block:: console
+.. code-block:: bash
 
     pip install cdm_reader_mapper
 
 If you want to contribute, we recommend cloning the repository and installing the package in development mode, e.g.
 
-.. code-block:: console
+.. code-block:: bash
 
     git clone https://github.com/glamod/cdm_reader_mapper
     cd cdm_reader_mapper
@@ -65,13 +65,13 @@ Installation using uv
 
 You can install the package using `uv`_ package manager, this will add the library to your active environment:
 
-.. code-block:: console
+.. code-block:: bash
 
     uv add cdm_reader_mapper
 
 To develop the package using uv, the following will create a virtual environment, uv defaults to ``.venv``:
 
-.. code-block:: console
+.. code-block:: bash
 
     git clone https://github.com/glamod/cdm_reader_mapper
     cd cdm_reader_mapper

@@ -22,7 +22,7 @@ Workflow
 
     Simplified workflow of the :py:func:`cdm_reader_mapper.read_mdf` function
 
-.. code-block:: console
+.. code-block:: python
 
    from cdm_reader_mapper import read_mdf
    from cdm_reader_mapper.test_data import test_icoads_r300_d704 as test_data
