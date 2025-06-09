@@ -120,7 +120,7 @@
   "report_time_accuracy": {
     "sections": "core",
     "elements": "TI",
-    "transform": "time_accuracy",
+    "code_table": "time_accuracy",
     "decimal_places": 0
   },
   "report_time_quality": {

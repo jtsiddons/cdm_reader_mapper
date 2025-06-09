@@ -342,17 +342,6 @@ class mapping_functions:
             df.iloc[:, 0] = np.where((df.iloc[:, 0] == 0) | (df.iloc[:, 0] == 5), 1, -1)
             return df.iloc[:, 0] * df.iloc[:, 1] + 273.15
 
-    def time_accuracy(self, df) -> pd.DataFrame | pd.Series:  # ti_core
-        """Calculate time accuracy."""
-        # Shouldn't we use the code_table mapping for this? see CDM!
-        secs = {
-            "0": 3600,
-            "1": int(round(3600 / 10)),
-            "2": int(round(3600 / 60)),
-            "3": int(round(3600 / 100)),
-        }
-        return df.map(secs, na_action="ignore")
-
     def feet_to_m(self, df) -> float:
         """Convert feet into meter."""
         df.astype(float)
