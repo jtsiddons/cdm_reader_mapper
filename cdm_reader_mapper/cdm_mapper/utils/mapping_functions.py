@@ -106,7 +106,7 @@ def coord_dmh_to_90i(deg, min, hemis) -> float:
     return np.round((deg + min_df), 2) * hemisphere
 
 
-def convert_to_utc_i(date, zone) -> pd.DateTimeIndex:
+def convert_to_utc_i(date, zone) -> pd.DatetimeIndex:
     """
     Convert local time zone to utc.
 
@@ -136,7 +136,7 @@ def longitude_360to180_i(lon) -> int | float:
         return lon
 
 
-def location_accuracy_i(li, lat) -> int | np.nan:
+def location_accuracy_i(li, lat) -> int | float:  # Note: np.nan is float
     """Calculate location accuracy."""
     degrees = {0: 0.1, 1: 1, 4: 1 / 60, 5: 1 / 3600}
     deg_km = 111
@@ -181,7 +181,7 @@ class mapping_functions:
         series["M"] = int(seconds / 60) % 60
         return series
 
-    def datetime_imma1(self, df) -> pd.DateTimeIndex:  # TZ awareness?
+    def datetime_imma1(self, df) -> pd.DatetimeIndex:  # TZ awareness?
         """Convert to pandas datetime object."""
         date_format = "%Y-%m-%d-%H-%M"
         hr_ = df.columns[-1]
@@ -196,11 +196,11 @@ class mapping_functions:
             errors="coerce",
         )
 
-    def datetime_utcnow(self, df) -> datetime:
+    def datetime_utcnow(self, df) -> datetime.datetime:
         """Get actual UTC time."""
         return datetime.datetime.now(self.utc)
 
-    def datetime_craid(self, df, format="%Y-%m-%d %H:%M:%S.%f") -> pd.DateTimeIndex:
+    def datetime_craid(self, df, format="%Y-%m-%d %H:%M:%S.%f") -> pd.DatetimeIndex:
         """Convert string to datetime object."""
         return pd.to_datetime(df.values, format=format, errors="coerce")
 
@@ -334,8 +334,7 @@ class mapping_functions:
     def temperature_celsius_to_kelvin(self, df) -> pd.DataFrame | pd.Series:
         """Convert temperature from degrre Ceslius to Kelvin."""
         method = find_entry(self.imodel, c2k_methods)
-        if not method:
-            method = "method_a"
+        method = method if method else "method_a"
         if method == "method_a":
             return df + 273.15
         if method == "method_b":
