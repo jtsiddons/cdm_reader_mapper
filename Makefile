@@ -56,13 +56,13 @@ install-lint: ## install dependencies needed for linting
 	python -m pip install --quiet --group lint
 
 install-docs: ## install dependencies needed for building the docs
-	python -m pip install --quiet --group docs
+	python -m pip install . --quiet --group docs
 
 install-test: ## install dependencies needed for standard testing
-	python -m pip install --quiet --group test
+	python -m pip install . --quiet --group test
 
 install-tox: ## install base dependencies needed for running tox
-	python -m pip install --quiet --group tox
+	python -m pip install . --quiet --group tox
 
 lint: install-lint ## check style
 	python -m ruff check src/cdm_reader_mapper tests
@@ -103,16 +103,17 @@ servedocs: autodoc ## compile the docs while watching for changes
 	watchmedo shell-command -p '*.rst' -c '$(MAKE) -C docs html' -R -D .
 
 dist: clean ## builds source and wheel package
-	python -m flint build
+	python -m pip install flit
+	python -m flit build
 	ls -l dist
 
 release: dist ## package and upload a release
-	python -m flint publish dist/*
+	python -m flit publish dist/*
 
 install: clean ## install the package to the active Python's site-packages
 	python -m pip install --no-user .
 
 development: clean ## install the package to the active Python's site-packages
 	python -m pip install --group dev
-	python -m pip install --no-user --editable .[extras]
+	python -m pip install --no-user --editable .
 	prek install
